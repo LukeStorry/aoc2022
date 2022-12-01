@@ -43,23 +43,13 @@ _Click a badge to go to the specific day._
 
 ---
 
-## Installation
-
-```
-yarn
-```
-
 ## Running in dev mode
 
 ```
 yarn start <day>
+python3 ./src/day01 
 ```
 
-Example:
-
-```
-yarn start 1
-```
 
 ---
 
