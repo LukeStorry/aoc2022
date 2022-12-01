@@ -43,11 +43,14 @@ _Click a badge to go to the specific day._
 
 ---
 
-## Running in dev mode
+## Running
 
 ```
-yarn start <day>
-python3 ./src/day01 
+yarn start 1
+python3 ./src/day01
+
+cargo aoc input; cargo aoc -d 1
+cargo run
 ```
 
 

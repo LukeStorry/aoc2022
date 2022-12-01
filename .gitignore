@@ -1,7 +1,6 @@
 node_modules
 *.temp.*
 */**/*.temp.*
-*/**/input.txt
 *.log
 */**/*.log
 .idea
@@ -10,3 +9,4 @@ node_modules
 dist
 __pycache__
 /target
+input/2022
