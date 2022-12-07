@@ -1,34 +1,20 @@
-use std::str::FromStr;
-
-use aoc_runner_derive::{aoc, aoc_generator};
+use aoc_runner_derive::aoc;
 use itertools::Itertools;
 use regex::Regex;
 
-#[derive(Debug)]
-struct Move(usize, usize, usize);
-#[derive(Debug)]
-struct Stack(Vec<char>);
-#[derive(Debug)]
-struct Stacks(Vec<Stack>);
-
-impl FromIterator<Stack> for Stacks {
-    fn from_iter<T: IntoIterator<Item = Stack>>(iter: T) -> Self {
-        Self(iter.into_iter().collect())
-    }
+pub trait FromStr {
+    fn from_str(s: &str) -> Self;
 }
 
-impl FromIterator<char> for Stack {
-    fn from_iter<T: IntoIterator<Item = char>>(iter: T) -> Self {
-        Self(iter.into_iter().collect())
-    }
-}
+type Moves = Vec<(usize, usize, usize)>;
+type Stack = Vec<char>;
+type Stacks = Vec<Stack>;
+type Data = (Stacks, Moves);
 
 impl FromStr for Stacks {
-    type Err = std::num::ParseIntError;
-
-    fn from_str(s: &str) -> Result<Self, Self::Err> {
+    fn from_str(s: &str) -> Self {
         let lines = s.lines().collect_vec();
-        let vec = lines
+        lines
             .last()
             .unwrap()
             .chars()
@@ -41,47 +27,48 @@ impl FromStr for Stacks {
                     .filter(|char| char.is_alphabetic())
                     .collect()
             })
-            .collect();
-        Ok(vec)
+            .collect()
     }
 }
 
-struct Data {
-    stack: Stack,
-    moves: Vec<Move>,
+impl FromStr for Moves {
+    fn from_str(s: &str) -> Self {
+        Regex::new(r"(\d+).*(\d+).*(\d+)")
+            .unwrap()
+            .captures_iter(s)
+            .map(|cap| {
+                (
+                    cap[1].parse().unwrap(),
+                    cap[2].parse().unwrap(),
+                    cap[3].parse().unwrap(),
+                )
+            })
+            .collect()
+    }
 }
 
-fn parse_moves(s: &str) -> Vec<Move> {
-    Regex::new(r"(\d+).*(\d+).*(\d+)")
-        .unwrap()
-        .captures_iter(s)
-        .map(|cap| {
-            Move(
-                cap[1].parse().unwrap(),
-                cap[2].parse().unwrap(),
-                cap[3].parse().unwrap(),
-            )
-        })
-        .collect()
+impl FromStr for Data {
+    fn from_str(s: &str) -> Self {
+        let (stack_lines, moves_lines) = s.split("\n\n").collect_tuple().unwrap();
+        (Stacks::from_str(stack_lines), Moves::from_str(moves_lines))
+    }
 }
 
-#[aoc_generator(day5)]
-fn parse(input: &str) -> (Stacks, Vec<Move>) {
-    let (stack_lines, moves_lines) = input.split("\n\n").collect_tuple().unwrap();
+fn part_1(input: &str) -> &str {
+    let (mut stacks, moves) = Data::from_str(input);
 
-    (
-        Stacks::from_str(stack_lines).unwrap(),
-        parse_moves(moves_lines),
-    )
+    for (from, to, amount) in moves {
+        let from_stack = stacks.get_mut(from - 1).unwrap();
+        let to_stack = stacks.get_mut(to - 1).unwrap();
+
+        for _ in 0..amount {
+            let disk = from_stack.pop().unwrap();
+            to_stack.push(disk);
+        }
+    }
 }
 
-#[aoc(day5, part1)]
-fn part_1((stacks, moves): &(Stacks, Vec<Move>)) -> &str {
-    ""
-}
-
-#[aoc(day5, part2)]
-fn part_2((stacks, moves): &(Stacks, Vec<Move>)) -> &str {
+fn part_2(input: &str) -> &str {
     ""
 }
 
@@ -92,13 +79,10 @@ mod tests {
 
     #[test]
     fn test_part_1() {
-        let data = &parse(EXAMPLE);
-        println!("{:?}", data);
-        assert_eq!(1, 1);
+        assert_eq!(part_1(EXAMPLE), "CMZ");
     }
     #[test]
     fn test_part_2() {
-        let data = &parse(EXAMPLE);
-        // assert_eq!(part_2(data), 45000);
+        assert_eq!(part_2(EXAMPLE), "CMZ");
     }
 }
