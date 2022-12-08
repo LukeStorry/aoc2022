@@ -15,28 +15,23 @@ def slices(y, x):
     )
 
 
-print(
-    sum(
-        1
-        for x in range(width)
-        for y in range(height)
-        if any(
-            not any(tree >= trees[y][x] for tree in direction)
-            for direction in slices(y, x)
-        )
+def visible(x, y):
+    return any(
+        not any(tree >= trees[y][x] for tree in direction) for direction in slices(y, x)
     )
-)
 
-print(
-    max(
-        prod(
-            next(
-                (i + 1 for (i, tree) in enumerate(direction) if tree >= trees[y][x]),
-                len(direction),
-            )
-            for direction in slices(y, x)
+
+print(sum(1 for x in range(width) for y in range(height) if visible(x, y)))
+
+
+def scenic_score(y, x):
+    return prod(
+        next(
+            (i + 1 for (i, tree) in enumerate(direction) if tree >= trees[y][x]),
+            len(direction),
         )
-        for x in range(width)
-        for y in range(height)
+        for direction in slices(y, x)
     )
-)
+
+
+print(max(scenic_score(y, x) for x in range(width) for y in range(height)))
