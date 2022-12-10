@@ -1,20 +1,19 @@
-def solve(data: str):
-    x = [1, 1]
-    count = 0
-    for cmd in data.splitlines():
-        match cmd.split():
-            case ["noop"]:
-                x.append(x[-1])
-            case ["addx", num]:
-                x.append(x[-1])
-                x.append(x[-1] + int(num))
-            case _:
-                print(f"unknown command {cmd}")
+data = open("./src/day10/input.txt").read()
 
-    # print([[i, x[i], i * x[i]] for i in (20, 60, 100, 140, 180, 220)])
-    return sum(i * x[i] for i in (20, 60, 100, 140, 180, 220))
+reg_x = [1, 1]
+count = 0
+for cmd in data.splitlines():
+    match cmd.split():
+        case ["noop"]:
+            reg_x.append(reg_x[-1])
+        case ["addx", num]:
+            reg_x.append(reg_x[-1])
+            reg_x.append(reg_x[-1] + int(num))
 
+print(sum(i * reg_x[i] for i in (20, 60, 100, 140, 180, 220)))
 
-# solve("noop\naddx 3\naddx -5\n")
-print(solve(open("./src/day10/example.txt").read()))
-print(solve(open("./src/day10/input.txt").read()))
+for row in range(6):
+    for col in range(40):
+        sprite = reg_x[row * 40 + col + 1]
+        print("#" if col in (sprite - 1, sprite, sprite + 1) else ".", end="")
+    print()
