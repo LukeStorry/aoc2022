@@ -8,36 +8,28 @@ DIGITS = re.compile(r"\d+")
 
 @dataclass
 class Monkey:
-    test_lcm: ClassVar[int] = 1
     test: int
-    items: list
+    items: list[int]
     operation: Callable
     test: int
     throw_true: int
     throw_false: int
     inspections: int = 0
+    lcm: ClassVar[int] = 1
 
     def __init__(self, input: str):
         _, items, operation, test, true, false = input.splitlines()
         self.items = [int(i) for i in DIGITS.findall(items)]
+        self.operation = lambda old: eval(operation.split("=")[1])
         self.test = int(DIGITS.findall(test)[0])
         self.throw_true = int(DIGITS.findall(true)[0])
         self.throw_false = int(DIGITS.findall(false)[0])
-
-        Monkey.test_lcm = lcm(Monkey.test_lcm, self.test)
-
-        match operation.split("= old ")[1].split():
-            case ["*", "old"]:
-                self.operation = lambda old: old * old
-            case ["*", num]:
-                self.operation = lambda old, num=num: old * int(num)
-            case ["+", num]:
-                self.operation = lambda old, num=num: old + int(num)
+        Monkey.lcm = lcm(Monkey.lcm, self.test)
 
     def turn(self, monkeys, part1: bool):
         while self.items:
             self.inspections += 1
-            worry = self.operation(self.items.pop(0)) % self.test_lcm
+            worry = self.operation(self.items.pop(0)) % self.lcm
             if part1:
                 worry = worry // 3
             recipient = self.throw_true if worry % self.test == 0 else self.throw_false
