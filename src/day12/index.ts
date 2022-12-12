@@ -8,7 +8,6 @@ const setup = (input: string) => {
     .map((row, y) => row.split('')
       .map((c, x) => ({ x, y, c })));
   return {
-    nodes,
     start: nodes.flatMap(n => n).find(({ c }) => c == 'E')!,
     neighbor: ({ x, y, c }: Node) =>
       [[x - 1, y], [x + 1, y], [x, y - 1], [x, y + 1]]
@@ -18,8 +17,8 @@ const setup = (input: string) => {
           if (c == 'a' && new_c == 'S') return true
           return c.charCodeAt(0) - new_c.charCodeAt(0) <= 1;
         }),
-    hash: ({ x, y, c }: Node) => `${x}${y}${c}`,
-    heuristic: ({ c }: Node) => c.charCodeAt(0) - 'a'.charCodeAt(0) + 10000,
+    hash: ({ x, y, c }: Node) => `${c}-${x}-${y}`,
+    heuristic: ({ c }: Node) => c.charCodeAt(0) - 'a'.charCodeAt(0),
     distance: () => 1
   }
 }
