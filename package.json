@@ -20,6 +20,7 @@
     "prettier": "^2.4.1"
   },
   "dependencies": {
+    "a-star": "^0.2.0",
     "lodash": "^4.17.21"
   },
   "engines": {

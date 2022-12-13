@@ -17,6 +17,20 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-16.18.3.tgz#d7f7ba828ad9e540270f01ce00d391c54e6e0abc"
   integrity sha512-jh6m0QUhIRcZpNv7Z/rpN+ZWXOicUUQbSoWks7Htkbb9IjFQj4kzcX/xFCkjstCj5flMsN8FiSvt+q+Tcs4Llg==
 
+Set@^0.4.1:
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/Set/-/Set-0.4.1.tgz#8385587be9863e49d2ffd7a85e1a1e4b11633ca6"
+  integrity sha512-+TXBAK+hDss1DqX7W5fGw0JuvGrtVwAHYGWgqe0MIWHH/U9HvBb9LsgNZ3TLZX8DaddBGRmCgoDuk7mnYgx8Dw==
+
+a-star@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/a-star/-/a-star-0.2.0.tgz#a1423c830c3bf9a259d490bfbf2710e792f044f9"
+  integrity sha512-8tnUNOOneo7w5MnhQc9VuTAaVAWf+gg5j/bIm6QF77TmC40qwZPlWhKSfSCwrw1M9RUhHTn2PDX+ZtcVNRqIaw==
+  dependencies:
+    Set "^0.4.1"
+    dict "^1.4.0"
+    heap "^0.2.3"
+
 abab@^2.0.5, abab@^2.0.6:
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/abab/-/abab-2.0.6.tgz#41b80f2c871d19686216b82309231cfd3cb3d291"
@@ -178,6 +192,11 @@ delayed-stream@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/delayed-stream/-/delayed-stream-1.0.0.tgz#df3ae199acadfb7d440aaae0b29e2272b24ec619"
   integrity sha512-ZySD7Nf91aLB0RxL4KGrKHBXl7Eds1DAmEdcoVawXnLD7SDhpNgtuII2aAkg7a7QS41jxPSZ17p4VdGnMHk3MQ==
+
+dict@^1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/dict/-/dict-1.4.0.tgz#83d87d57cf0c4ac0d834608448b10a6e23bbfea0"
+  integrity sha512-iJZcYCUwg0vDqo/CSc96qd08CKRagnQniCpcwfzGDuR/3fyilTFdS8/f0ft95aVGZkoQNuwgpTxs4FtD4jH5Fw==
 
 domexception@^4.0.0:
   version "4.0.0"
@@ -378,6 +397,11 @@ glob-parent@~5.1.2:
   integrity sha512-AOIgSQCepiJYwP3ARnGx+5VnTu2HBYdzbGP45eLw1vr3zB3vZLeyed1sC9hnbcOc9/SrMyM5RPQrkGz4aS9Zow==
   dependencies:
     is-glob "^4.0.1"
+
+heap@^0.2.3:
+  version "0.2.7"
+  resolved "https://registry.yarnpkg.com/heap/-/heap-0.2.7.tgz#1e6adf711d3f27ce35a81fe3b7bd576c2260a8fc"
+  integrity sha512-2bsegYkkHO+h/9MGbn6KWcE45cHZgPANo5LXF7EvWdT0yT2EguSVO1nDgU5c8+ZOPwp2vMNa7YFsJhVcDR9Sdg==
 
 html-encoding-sniffer@^3.0.0:
   version "3.0.0"
