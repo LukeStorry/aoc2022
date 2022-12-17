@@ -1,20 +1,19 @@
 data = list(open("./src/day17/input.txt").read())
 rock_shapes = [
-    [0j, 1 + 0j, 2 + 0j, 3 + 0j],
-    [1j, 1 + 0j, 1 + 1j, 1 + 2j, 2 + 1j],
-    [0j, 1 + 0j, 2 + 0j, 2 + 1j, 2 + 2j],
-    [0j, 1j, 2j, 3j],
-    [0j, 1j, 1 + 0j, 1 + 1j],
+    [0, 1, 2, 3],
+    [1j, 1, 1 + 1j, 1 + 2j, 2 + 1j],
+    [0, 1, 2, 2 + 1j, 2 + 2j],
+    [0, 1j, 2j, 3j],
+    [0, 1j, 1, 1 + 1j],
 ]
 width, rocks, blows, extra_height, cycles = 7, 0, 0, 0, {}
-heights, taken_places = [0] * width, set(complex(x, 0) for x in range(width))
+heights, taken_places = [0] * width, set(x for x in range(width))
 
 
-def blocked(rock_type: int, loc: complex):
-    return any(
-        (loc + block).real < 0 or (loc + block).real >= width or loc + block in taken_places
-        for block in rock_shapes[rock_type]
-    )
+blocked = lambda rock_type, loc: any(
+    (loc + block).real < 0 or (loc + block).real >= width or loc + block in taken_places
+    for block in rock_shapes[rock_type]
+)
 
 
 part1, part2 = 2022, 1000000000000
@@ -31,6 +30,7 @@ while rocks < part2:
         if blocked(rock_type, location - 1j):
             break
         location -= 1j
+        
     for block in rock_shapes[rock_type]:
         new = location + block
         heights[int(new.real)] = int(max(heights[int(new.real)], new.imag))
