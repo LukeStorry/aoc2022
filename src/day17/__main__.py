@@ -1,25 +1,40 @@
 data = list(open("./src/day17/input.txt").read())
-rock_shapes = [[(0, 0), (1, 0), (2, 0), (3, 0)], [(0, 1), (1, 0), (1, 1), (1, 2), (2, 1)], [(0, 0), (1, 0), (2, 0), (2, 1), (2, 2)], [(0, 0), (0, 1), (0, 2), (0, 3)], [(0, 0), (0, 1), (1, 0), (1, 1)]]
-width, rocks, blows, cycles, extra_height = 7, 0, 0, {}, 0
-heights, taken_places = [0] * width, set((x, 0) for x in range(width))
-blocked = lambda rock_type, x, y: any(x < 0 or x + dx >= width or (x + dx, y + dy) in taken_places for dx, dy in rock_shapes[rock_type])
+rock_shapes = [
+    [0j, 1 + 0j, 2 + 0j, 3 + 0j],
+    [1j, 1 + 0j, 1 + 1j, 1 + 2j, 2 + 1j],
+    [0j, 1 + 0j, 2 + 0j, 2 + 1j, 2 + 2j],
+    [0j, 1j, 2j, 3j],
+    [0j, 1j, 1 + 0j, 1 + 1j],
+]
+width, rocks, blows, extra_height, cycles = 7, 0, 0, 0, {}
+heights, taken_places = [0] * width, set(complex(x, 0) for x in range(width))
+
+
+def blocked(rock_type: int, loc: complex):
+    return any(
+        (loc + block).real < 0 or (loc + block).real >= width or loc + block in taken_places
+        for block in rock_shapes[rock_type]
+    )
+
+
 part1, part2 = 2022, 1000000000000
 
 while rocks < part2:
-    x, y = 2, max(heights) + 4
+    location = complex(2, max(heights) + 4)
     while True:
         rock_type = rocks % 5
-        if data[blows] == "<" and not blocked(rock_type, x - 1, y):
-            x -= 1
-        if data[blows] == ">" and not blocked(rock_type, x + 1, y):
-            x += 1
+        if data[blows] == "<" and not blocked(rock_type, location - 1):
+            location -= 1
+        if data[blows] == ">" and not blocked(rock_type, location + 1):
+            location += 1
         blows = (blows + 1) % len(data)
-        if blocked(rock_type, x, y - 1):
+        if blocked(rock_type, location - 1j):
             break
-        y -= 1
-    for dx, dy in rock_shapes[rock_type]:
-        heights[x + dx] = max(heights[x + dx], y + dy)
-        taken_places.add((x + dx, y + dy))
+        location -= 1j
+    for block in rock_shapes[rock_type]:
+        new = location + block
+        heights[int(new.real)] = int(max(heights[int(new.real)], new.imag))
+        taken_places.add(new)
 
     rocks += 1
     if rocks in (part1, part2):
