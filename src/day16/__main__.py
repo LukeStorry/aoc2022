@@ -21,7 +21,9 @@ valves = [
 ]
 
 distances = {
-    (v, to): 1 if to.name in v.leads_to else 999999 for to in valves for v in valves
+    (v, to): 1 if to.name in v.leads_to else 999999
+    for to in valves
+    for v in valves
 }
 
 for c in valves:
@@ -36,9 +38,9 @@ for c in valves:
 def try_paths(
     current: Valve,
     minute: int,
-    opened: frozenset[str],
-    pressure: int,
-    found_pressures: dict[frozenset[str], int],
+    opened=frozenset(),
+    pressure=0,
+    found_pressures: dict[frozenset[str], int] = {},
 ):
     found_pressures[opened] = max(pressure, found_pressures.get(opened, 0))
     for next in valves:
@@ -53,15 +55,14 @@ def try_paths(
             mins_left,
             frozenset(opened.union([next.name])),
             pressure + next.flow_rate * mins_left,
-            found_pressures,
         )
     return found_pressures
 
 
 AA = next(v for v in valves if v.name == "AA")
-print(max(try_paths(AA, 30, frozenset(), 0, {}).values()))
+print(max(try_paths(AA, 30).values()))
 
-part_2_run = try_paths(AA, 26, frozenset(), 0, {})
+part_2_run = try_paths(AA, 26)
 print(
     max(
         my_pressure + elephant_pressure
