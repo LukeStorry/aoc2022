@@ -1,9 +1,9 @@
 <!-- Entries between SOLUTIONS and RESULTS tags are auto-generated -->
 
-[![AoC](https://badgen.net/badge/AoC/2022/blue)](https://adventofcode.com/2022)
-[![Node](https://badgen.net/badge/Node/v16.13.0+/blue)](https://nodejs.org/en/download/)
+[![AoC](https://badgen.net/badge/AoC/2022/green)](https://adventofcode.com/2022)
 ![Language](https://badgen.net/badge/Language/TypeScript/blue)
-[![Template](https://badgen.net/badge/Template/aocrunner/blue)](https://github.com/caderek/aocrunner)
+![Language](https://badgen.net/badge/Language/Python/yellow)
+
 
 # 🎄 Advent of Code 2022 🎄
 
@@ -28,14 +28,14 @@
 [![Day](https://badgen.net/badge/15/%E2%98%85%E2%98%85/yellow)](src/day15)
 [![Day](https://badgen.net/badge/16/%E2%98%85%E2%98%85/yellow)](src/day16)
 [![Day](https://badgen.net/badge/17/%E2%98%85%E2%98%85/yellow)](src/day17)
-![Day](https://badgen.net/badge/18/%E2%98%86%E2%98%86/gray)
-![Day](https://badgen.net/badge/19/%E2%98%86%E2%98%86/gray)
-![Day](https://badgen.net/badge/20/%E2%98%86%E2%98%86/gray)
-![Day](https://badgen.net/badge/21/%E2%98%86%E2%98%86/gray)
-![Day](https://badgen.net/badge/22/%E2%98%86%E2%98%86/gray)
-![Day](https://badgen.net/badge/23/%E2%98%86%E2%98%86/gray)
-![Day](https://badgen.net/badge/24/%E2%98%86%E2%98%86/gray)
-![Day](https://badgen.net/badge/25/%E2%98%86%E2%98%86/gray)
+[![Day](https://badgen.net/badge/18/%E2%98%86%E2%98%86/gray)](src/day18)
+[![Day](https://badgen.net/badge/19/%E2%98%86%E2%98%86/gray)](src/day19)
+[![Day](https://badgen.net/badge/20/%E2%98%86%E2%98%86/gray)](src/day20)
+[![Day](https://badgen.net/badge/21/%E2%98%86%E2%98%86/gray)](src/day21)
+[![Day](https://badgen.net/badge/22/%E2%98%86%E2%98%86/gray)](src/day22)
+[![Day](https://badgen.net/badge/23/%E2%98%86%E2%98%86/gray)](src/day23)
+[![Day](https://badgen.net/badge/24/%E2%98%86%E2%98%86/gray)](src/day24)
+[![Day](https://badgen.net/badge/25/%E2%98%86%E2%98%86/gray)](src/day25)
 
 <!--/SOLUTIONS-->
 
