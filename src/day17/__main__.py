@@ -1,59 +1,39 @@
 data = list(open("./src/day17/input.txt").read())
-data = list(">>><<><>><<<>><>>><<<>>><<<><<<>><>><<>>")
+# data = list(">>><<><>><<<>><>>><<<>>><<<><<<>><>><<>>")
 
 rocks = [
-    ["####"],
-    [".#.", "###", ".#."],
-    ["..#", "..#", "###"],
-    ["#", "#", "#", "#"],
-    ["##", "##"],
+    [(0, 0), (1, 0), (2, 0), (3, 0)],
+    [(0, 1), (1, 0), (1, 1), (1, 2), (2, 1)],
+    [(0, 0), (1, 0), (2, 0), (2, 1), (2, 2)],
+    [(0, 0), (0, 1), (0, 2), (0, 3)],
+    [(0, 0), (0, 1), (1, 0), (1, 1)],
 ]
 
+width, number_of_rocks, blows = 7, 0, 0
+heights, taken_places = [0] * 7, set((x, 0) for x in range(width))
 
-width = 7
-heights = [0 for _ in range(width)]
+blocked = lambda rock_type, x, y: any(
+    x < 0 or x + dx >= width or (x + dx, y + dy) in taken_places
+    for dx, dy in rocks[rock_type]
+)
 
-
-def has_halted(rock_type: int, x: int, y: int) -> bool:
-    if rock_type == 1 and heights[x + 2] >= y:
-        return True
-    return any(
-        True
-        for char_x, char in enumerate(rocks[rock_type][-1])
-        if char == "#" and heights[x + char_x] >= y
-    )
-
-
-number_of_rocks = 0
-blows = 0
-while number_of_rocks < 5:
+while number_of_rocks < 2022:
     x, y = 2, max(heights) + 4
     while True:
         rock_type = number_of_rocks % 5
-        x += 1 if data[blows % len(data)] == ">" else -1
-        print(number_of_rocks, data[blows % len(data)])
-        # print(x, y)
-
-        blows += 1
-
-        rock_width = max(len(row) for row in rocks[rock_type])
-        x = max(0, min(x, width - rock_width))
-
-        if has_halted(rock_type, x, y):
+        if data[blows] == "<" and not blocked(rock_type, x - 1, y):
+            x -= 1
+        if data[blows] == ">" and not blocked(rock_type, x + 1, y):
+            x += 1
+        blows = (blows + 1) % len(data)
+        if blocked(rock_type, x, y - 1):
             break
-
         y -= 1
 
-        if has_halted(rock_type, x, y):
-            break
-    print(x, y)
-    for char_y, row in enumerate(reversed(rocks[rock_type])):
-        for char_x, char in enumerate(row):
-            if char == "#":
-                heights[x + char_x] = max(heights[x + char_x], y + char_y + 1)
+    for dx, dy in rocks[rock_type]:
+        heights[x + dx] = max(heights[x + dx], y + dy)
+        taken_places.add((x + dx, y + dy))
 
-    print(number_of_rocks, heights)
-    print()
     number_of_rocks += 1
 
 print(max(heights))
