@@ -1,6 +1,6 @@
+from math import prod
 import re
 from typing import NamedTuple
-
 
 class State(NamedTuple):
     geode: int = 0
@@ -12,104 +12,88 @@ class State(NamedTuple):
     clay: int = 0
     ore: int = 0
 
-    def no_build(s: "State", bp: "Blueprint"):
-        return State(
-            ore=s.ore + s.ore_robots,
-            clay=s.clay + s.clay_robots,
-            obsidian=s.obsidian + s.obsidian_robots,
-            geode=s.geode + s.geode_robots,
-            ore_robots=s.ore_robots,
-            clay_robots=s.clay_robots,
-            obsidian_robots=s.obsidian_robots,
-            geode_robots=s.geode_robots,
-        )
-
-    def build_ore_robot(s: "State", bp: "Blueprint"):
-        return State(
-            ore_robots=s.ore_robots + 1,
-            ore=s.ore + s.ore_robots - bp.ore_robot_ore_cost,
-            clay=s.clay + s.clay_robots,
-            obsidian=s.obsidian + s.obsidian_robots,
-            geode=s.geode + s.geode_robots,
-            clay_robots=s.clay_robots,
-            obsidian_robots=s.obsidian_robots,
-            geode_robots=s.geode_robots,
-        )
-
-    def build_clay_robot(s: "State", bp: "Blueprint"):
-        return State(
-            clay_robots=s.clay_robots + 1,
-            ore=s.ore + s.ore_robots - bp.clay_robot_ore_cost,
-            clay=s.clay + s.clay_robots,
-            obsidian=s.obsidian + s.obsidian_robots,
-            geode=s.geode + s.geode_robots,
-            ore_robots=s.ore_robots,
-            obsidian_robots=s.obsidian_robots,
-            geode_robots=s.geode_robots,
-        )
-
-    def build_obsidian_robot(s: "State", bp: "Blueprint"):
-        return State(
-            obsidian_robots=s.obsidian_robots + 1,
-            ore=s.ore + s.ore_robots - bp.obsidian_robot_ore_cost,
-            clay=s.clay + s.clay_robots - bp.obsidian_robot_clay_cost,
-            obsidian=s.obsidian + s.obsidian_robots,
-            geode=s.geode + s.geode_robots,
-            ore_robots=s.ore_robots,
-            clay_robots=s.clay_robots,
-            geode_robots=s.geode_robots,
-        )
-
-    def build_geode_robot(s: "State", bp: "Blueprint"):
-        return State(
-            geode_robots=s.geode_robots + 1,
-            ore=s.ore + s.ore_robots - bp.geode_robot_ore_cost,
-            obsidian=s.obsidian + s.obsidian_robots - bp.geode_robot_obsidian_cost,
-            clay=s.clay + s.clay_robots,
-            geode=s.geode + s.geode_robots,
-            clay_robots=s.clay_robots,
-            obsidian_robots=s.obsidian_robots,
-            ore_robots=s.ore_robots,
-        )
-
-
 class Blueprint(NamedTuple):
     id: int
-    ore_robot_ore_cost: int
-    clay_robot_ore_cost: int
-    obsidian_robot_ore_cost: int
-    obsidian_robot_clay_cost: int
-    geode_robot_ore_cost: int
-    geode_robot_obsidian_cost: int
+    ore_ore: int
+    clay_ore: int
+    obsidian_ore: int
+    obsidian_clay: int
+    geode_ore: int
+    geode_obsidian: int
 
-    def most_geodes(self, until=24):
-        queue = set([State(ore_robots=1)])
-        for _ in range(0, until):
-            new_queue = set()
-            for state in sorted(queue)[-10000:]:
-                if (
-                    state.ore >= self.geode_robot_ore_cost
-                    and state.obsidian >= self.geode_robot_obsidian_cost
-                ):
-                    new_queue.add(state.build_geode_robot(self))
-                    # continue
+def most_geodes(blueprint: Blueprint, until: int):
+    queue = [State(ore_robots=1)]
+    for _ in range(0, until):
+        previous = sorted(queue)[-10000:]
+        queue = set()
+        for state in previous:
+            queue.add(
+                State(
+                    ore=state.ore + state.ore_robots,
+                    clay=state.clay + state.clay_robots,
+                    obsidian=state.obsidian + state.obsidian_robots,
+                    geode=state.geode + state.geode_robots,
+                    ore_robots=state.ore_robots,
+                    clay_robots=state.clay_robots,
+                    obsidian_robots=state.obsidian_robots,
+                    geode_robots=state.geode_robots,
+                )
+            )
+            if blueprint.ore_ore <= state.ore:
+                queue.add(
+                    State(
+                        ore_robots=state.ore_robots + 1,
+                        ore=state.ore + state.ore_robots - blueprint.ore_ore,
+                        clay=state.clay + state.clay_robots,
+                        obsidian=state.obsidian + state.obsidian_robots,
+                        geode=state.geode + state.geode_robots,
+                        clay_robots=state.clay_robots,
+                        obsidian_robots=state.obsidian_robots,
+                        geode_robots=state.geode_robots,
+                    )
+                )
+            if blueprint.clay_ore <= state.ore:
+                queue.add(
+                    State(
+                        clay_robots=state.clay_robots + 1,
+                        ore=state.ore + state.ore_robots - blueprint.clay_ore,
+                        clay=state.clay + state.clay_robots,
+                        obsidian=state.obsidian + state.obsidian_robots,
+                        geode=state.geode + state.geode_robots,
+                        ore_robots=state.ore_robots,
+                        obsidian_robots=state.obsidian_robots,
+                        geode_robots=state.geode_robots,
+                    )
+                )
+            if blueprint.obsidian_ore <= state.ore and blueprint.obsidian_clay <= state.clay:
+                queue.add(
+                    State(
+                        obsidian_robots=state.obsidian_robots + 1,
+                        ore=state.ore + state.ore_robots - blueprint.obsidian_ore,
+                        clay=state.clay + state.clay_robots - blueprint.obsidian_clay,
+                        obsidian=state.obsidian + state.obsidian_robots,
+                        geode=state.geode + state.geode_robots,
+                        ore_robots=state.ore_robots,
+                        clay_robots=state.clay_robots,
+                        geode_robots=state.geode_robots,
+                    )
+                )
+            if blueprint.geode_ore <= state.ore and blueprint.geode_obsidian <= state.obsidian:
+                queue.add(
+                    State(
+                        geode_robots=state.geode_robots + 1,
+                        ore=state.ore + state.ore_robots - blueprint.geode_ore,
+                        obsidian=state.obsidian + state.obsidian_robots - blueprint.geode_obsidian,
+                        clay=state.clay + state.clay_robots,
+                        geode=state.geode + state.geode_robots,
+                        clay_robots=state.clay_robots,
+                        obsidian_robots=state.obsidian_robots,
+                        ore_robots=state.ore_robots,
+                    )
+                )
+    return max(state.geode for state in queue)
 
-                if (
-                    state.ore >= self.obsidian_robot_ore_cost
-                    and state.clay >= self.obsidian_robot_clay_cost
-                ):
-                    new_queue.add(state.build_obsidian_robot(self))
 
-                new_queue.add(state.no_build(self))
-                if state.ore >= self.ore_robot_ore_cost:
-                    new_queue.add(state.build_ore_robot(self))
-                if state.ore >= self.clay_robot_ore_cost:
-                    new_queue.add(state.build_clay_robot(self))
-
-            queue = new_queue
-        return max(state.geode for state in queue)
-
-
-data = open("./src/day19/input.txt").read()
-blueprints = [Blueprint(*(map(int, re.findall(r"\d+", line)))) for line in data.splitlines()]
-print(sum(b.most_geodes() * b.id for b in blueprints))
+blueprints = [Blueprint(*(map(int, re.findall(r"\d+", line)))) for line in open("./src/day19/input.txt").read().splitlines()]
+print(sum(most_geodes(b, 24) * b.id for b in blueprints))
+print(prod(most_geodes(b, 32) for b in blueprints[:3]))
