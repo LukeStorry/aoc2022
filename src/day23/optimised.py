@@ -5,8 +5,7 @@ data = open("./src/day23/input.txt").read()
 elves = {complex(x, y) for y, line in enumerate(reversed(data.splitlines())) for x, c in enumerate(line) if c == "#"}
 
 
-for i in range(100):
-    print(i)
+for i in range(10000):
     choices: dict[complex, list[complex]] = defaultdict(list)
     next_elves: set[complex] = set()
     for elf in elves:
@@ -20,7 +19,7 @@ for i in range(100):
             next_elves.add(elf)
             continue
         for check, result in directions[i % 4 :] + directions[: i % 4]:
-            if not any(e in check for e in elves):
+            if not any(e in elves for e in check):
                 choices[result].append(elf)
                 break
         else:
@@ -28,7 +27,7 @@ for i in range(100):
 
     if not choices:
         break
-    
+
     for choice, elves_with_choice in choices.items():
         if len(elves_with_choice) == 1:
             next_elves.add(choice)
