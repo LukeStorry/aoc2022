@@ -1,8 +1,8 @@
-# 🎄 Advent of Code 2022 - day 8 🎄
+# Day 8: Treetop Tree House
 
-## Info
+Consider your map; <em>how many trees are visible from outside the grid?</em>
 
-Task description: [link](https://adventofcode.com/2022/day/8)
+[Full Question](https://adventofcode.com/2022/day/8)
 
 ## Notes
 

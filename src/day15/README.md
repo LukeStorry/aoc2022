@@ -1,8 +1,8 @@
-# 🎄 Advent of Code 2022 - day 15 🎄
+# Day 15: Beacon Exclusion Zone
 
-## Info
+Consult the report from the sensors you just deployed. <em>In the row where <code>y=2000000</code>, how many positions cannot contain a beacon?</em>
 
-Task description: [link](https://adventofcode.com/2022/day/15)
+[Full Question](https://adventofcode.com/2022/day/15)
 
 ## Notes
 Part 1 was ok, did my normal approach of using a set of coordinates to find the amount on a single row.

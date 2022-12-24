@@ -1,5 +1,5 @@
-# 🎄 Advent of Code 2022 - day 1 🎄
+# Day 1: Calorie Counting
 
-## Info
+Find the Elf carrying the most Calories. <em>How many total Calories is that Elf carrying?</em>
 
-Task description: [link](https://adventofcode.com/2022/day/1)
+[Full Question](https://adventofcode.com/2022/day/1)

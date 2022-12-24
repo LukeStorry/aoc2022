@@ -1,8 +1,8 @@
-# 🎄 Advent of Code 2022 - day 20 🎄
+# Day 20: Grove Positioning System
 
-## Info
+Mix your encrypted file exactly once. <em>What is the sum of the three numbers that form the grove coordinates?</em>
 
-Task description: [link](https://adventofcode.com/2022/day/20)
+[Full Question](https://adventofcode.com/2022/day/20)
 
 ## Notes
 

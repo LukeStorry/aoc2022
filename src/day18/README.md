@@ -1,8 +1,8 @@
-# 🎄 Advent of Code 2022 - day 18 🎄
+# Day 18: Boiling Boulders
 
-## Info
+<em>What is the surface area of your scanned lava droplet?</em>
 
-Task description: [link](https://adventofcode.com/2022/day/18)
+[Full Question](https://adventofcode.com/2022/day/18)
 
 ## Notes
 Good fun, part 1 was asking for a one-liner:

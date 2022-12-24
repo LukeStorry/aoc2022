@@ -1,8 +1,8 @@
-# 🎄 Advent of Code 2022 - day 19 🎄
+# Day 19: Not Enough Minerals
 
-## Info
+Determine the quality level of each blueprint using the largest number of geodes it could produce in 24 minutes. <em>What do you get if you add up the quality level of all of the blueprints in your list?</em>
 
-Task description: [link](https://adventofcode.com/2022/day/19)
+[Full Question](https://adventofcode.com/2022/day/19)
 
 ## Notes
 

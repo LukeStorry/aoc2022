@@ -1,8 +1,8 @@
-# 🎄 Advent of Code 2022 - day 9 🎄
+# Day 9: Rope Bridge
 
-## Info
+Simulate your complete hypothetical series of motions. <em>How many positions does the tail of the rope visit at least once?</em>
 
-Task description: [link](https://adventofcode.com/2022/day/9)
+[Full Question](https://adventofcode.com/2022/day/9)
 
 ## Notes
 

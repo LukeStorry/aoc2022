@@ -1,8 +1,8 @@
-# 🎄 Advent of Code 2022 - day 13 🎄
+# Day 13: Distress Signal
 
-## Info
+Determine which pairs of packets are already in the right order. <em>What is the sum of the indices of those pairs?</em>
 
-Task description: [link](https://adventofcode.com/2022/day/13)
+[Full Question](https://adventofcode.com/2022/day/13)
 
 ## Notes
 

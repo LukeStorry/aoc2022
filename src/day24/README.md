@@ -1,8 +1,8 @@
-# 🎄 Advent of Code 2022 - day 24 🎄
+# Day 24: Blizzard Basin
 
-## Info
+<em>What is the fewest number of minutes required to avoid the blizzards and reach the goal?</em>
 
-Task description: [link](https://adventofcode.com/2022/day/24)
+[Full Question](https://adventofcode.com/2022/day/24)
 
 ## Notes
 Nice cyclical pre-computation of blizzards, then started recursive finding but inevitably went djik-vibes.

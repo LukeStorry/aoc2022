@@ -1,8 +1,8 @@
-# 🎄 Advent of Code 2022 - day 16 🎄
+# Day 16: Proboscidea Volcanium
 
-## Info
+Work out the steps to release the most pressure in 30 minutes. <em>What is the most pressure you can release?</em>
 
-Task description: [link](https://adventofcode.com/2022/day/16)
+[Full Question](https://adventofcode.com/2022/day/16)
 
 ## Notes
 

@@ -1,5 +1,5 @@
-# 🎄 Advent of Code 2022 - day 1 🎄
+# Day 2: Rock Paper Scissors
 
-## Info
+<em>What would your total score be if everything goes exactly according to your strategy guide?</em>
 
-Task description: [link](https://adventofcode.com/2022/day/1)
+[Full Question](https://adventofcode.com/2022/day/1)

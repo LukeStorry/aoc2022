@@ -1,8 +1,8 @@
-# 🎄 Advent of Code 2022 - day 11 🎄
+# Day 11: Monkey in the Middle
 
-## Info
+Figure out which monkeys to chase by counting how many items they inspect over 20 rounds. <em>What is the level of monkey business after 20 rounds of stuff-slinging simian shenanigans?</em>
 
-Task description: [link](https://adventofcode.com/2022/day/11)
+[Full Question](https://adventofcode.com/2022/day/11)
 
 ## Notes
 More time trying to read the question than anything else, but a fun one for sure.

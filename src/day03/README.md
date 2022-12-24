@@ -1,8 +1,8 @@
-# 🎄 Advent of Code 2022 - day 3 🎄
+# Day 3: Rucksack Reorganization
 
-## Info
+Find the item type that appears in both compartments of each rucksack. <em>What is the sum of the priorities of those item types?</em>
 
-Task description: [link](https://adventofcode.com/2022/day/3)
+[Full Question](https://adventofcode.com/2022/day/3)
 
 ## Notes
 

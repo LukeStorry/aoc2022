@@ -1,8 +1,8 @@
-# 🎄 Advent of Code 2022 - day 23 🎄
+# Day 23: Unstable Diffusion
 
-## Info
+Simulate the Elves' process and find the smallest rectangle that contains the Elves after 10 rounds. <em>How many empty ground tiles does that rectangle contain?</em>
 
-Task description: [link](https://adventofcode.com/2022/day/23)
+[Full Question](https://adventofcode.com/2022/day/23)
 
 ## Notes
 Another fun one!

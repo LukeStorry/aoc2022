@@ -1,8 +1,8 @@
-# 🎄 Advent of Code 2022 - day 5 🎄
+# Day 5: Supply Stacks
 
-## Info
+<em>After the rearrangement procedure completes, what crate ends up on top of each stack?</em>
 
-Task description: [link](https://adventofcode.com/2022/day/5)
+[Full Question](https://adventofcode.com/2022/day/5)
 
 ## Notes
 

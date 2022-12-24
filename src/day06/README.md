@@ -1,8 +1,8 @@
-# 🎄 Advent of Code 2022 - day 6 🎄
+# Day 6: Tuning Trouble
 
-## Info
+<em>How many characters need to be processed before the first start-of-packet marker is detected?</em>
 
-Task description: [link](https://adventofcode.com/2022/day/6)
+[Full Question](https://adventofcode.com/2022/day/6)
 
 ## Notes
 

@@ -1,8 +1,8 @@
-# 🎄 Advent of Code 2022 - day 21 🎄
+# Day 21: Monkey Math
 
-## Info
+However, your actual situation involves <span title="Advent of Code 2022: Now With Considerably More Monkeys">considerably more monkeys</span>. <em>What number will the monkey named <code>root</code> yell?</em>
 
-Task description: [link](https://adventofcode.com/2022/day/21)
+[Full Question](https://adventofcode.com/2022/day/21)
 
 ## Notes
 Didn't wanna write another proper parser, and it looked close enough for me to be able to run an `eval` with some simple string replacements.

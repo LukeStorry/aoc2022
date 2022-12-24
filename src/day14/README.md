@@ -1,8 +1,8 @@
-# 🎄 Advent of Code 2022 - day 14 🎄
+# Day 14: Regolith Reservoir
 
-## Info
+Using your scan, simulate the falling sand. <em>How many units of sand come to rest before sand starts flowing into the abyss below?</em>
 
-Task description: [link](https://adventofcode.com/2022/day/14)
+[Full Question](https://adventofcode.com/2022/day/14)
 
 ## Notes
 

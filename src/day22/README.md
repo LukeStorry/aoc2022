@@ -1,8 +1,8 @@
-# 🎄 Advent of Code 2022 - day 22 🎄
+# Day 22: Monkey Map
 
-## Info
+Follow the path given in the monkeys' notes. <em>What is the final password?</em>
 
-Task description: [link](https://adventofcode.com/2022/day/22)
+[Full Question](https://adventofcode.com/2022/day/22)
 
 ## Notes
 

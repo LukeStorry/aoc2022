@@ -1,8 +1,8 @@
-# 🎄 Advent of Code 2022 - day 10 🎄
+# Day 10: Cathode-Ray Tube
 
-## Info
+Find the signal strength during the 20th, 60th, 100th, 140th, 180th, and 220th cycles. <em>What is the sum of these six signal strengths?</em>
 
-Task description: [link](https://adventofcode.com/2022/day/10)
+[Full Question](https://adventofcode.com/2022/day/10)
 
 ## Notes
 

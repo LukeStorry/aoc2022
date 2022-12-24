@@ -1,8 +1,8 @@
-# 🎄 Advent of Code 2022 - day 4 🎄
+# Day 4: Camp Cleanup
 
-## Info
+<em>In how many assignment pairs does one range fully contain the other?</em>
 
-Task description: [link](https://adventofcode.com/2022/day/4)
+[Full Question](https://adventofcode.com/2022/day/4)
 
 ## Notes
 

@@ -1,8 +1,8 @@
-# 🎄 Advent of Code 2022 - day 17 🎄
+# Day 17: Pyroclastic Flow
 
-## Info
+<em>How many units tall will the tower of rocks be after 2022 rocks have stopped falling?</em>
 
-Task description: [link](https://adventofcode.com/2022/day/17)
+[Full Question](https://adventofcode.com/2022/day/17)
 
 ## Notes
 A tough but quite fun one I think.
