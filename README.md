@@ -3,6 +3,7 @@
 [![AoC](https://badgen.net/badge/AoC/2022/green)](https://adventofcode.com/2022)
 ![Language](https://badgen.net/badge/Language/TypeScript/blue)
 ![Language](https://badgen.net/badge/Language/Python/yellow)
+![Language](https://badgen.net/badge/Language/Rust/red)
 
 
 # 🎄 Advent of Code 2022 🎄
@@ -34,15 +35,13 @@
 [![Day](https://badgen.net/badge/21/%E2%98%85%E2%98%85/yellow)](src/day21)
 [![Day](https://badgen.net/badge/22/%E2%98%85%E2%98%85/yellow)](src/day22)
 [![Day](https://badgen.net/badge/23/%E2%98%85%E2%98%85/yellow)](src/day23)
-[![Day](https://badgen.net/badge/24/%E2%98%86%E2%98%86/gray)](src/day24)
+[![Day](https://badgen.net/badge/24/%E2%98%85%E2%98%85/yellow)](src/day24)
 [![Day](https://badgen.net/badge/25/%E2%98%86%E2%98%86/gray)](src/day25)
 
-<!--/SOLUTIONS-->
-
-_Click a badge to go to the specific day._
 
 ---
 
+First week rust, second week typescript, all python.
 ## Running
 
 ```
